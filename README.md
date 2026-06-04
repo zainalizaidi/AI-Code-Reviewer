@@ -1,4 +1,4 @@
-# CodeSense AI — Code Review Assistant
+# AI — Code Reviewer 
 
 A production-grade, full-stack AI-powered code review application built with **FastAPI**, **React**, and **Gemini 2.5 Flash**.
 
