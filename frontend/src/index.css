@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-white font-body antialiased;
+    background-color: #0a0a0f;
+    background-image:
+      radial-gradient(at 15% 20%, rgba(110, 231, 183, 0.04) 0, transparent 45%),
+      radial-gradient(at 85% 80%, rgba(99, 102, 241, 0.05) 0, transparent 45%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111118;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e1e2e;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6ee7b730;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(22, 22, 31, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-hover {
+    @apply glass transition-all duration-300;
+  }
+
+  .glass-hover:hover {
+    background: rgba(22, 22, 31, 0.9);
+    border-color: rgba(110, 231, 183, 0.2);
+    box-shadow: 0 0 20px rgba(110, 231, 183, 0.08);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(110, 231, 183, 0.5);
+  }
+
+  .score-ring {
+    filter: drop-shadow(0 0 12px rgba(110, 231, 183, 0.4));
+  }
+
+  .code-block {
+    @apply font-mono text-sm bg-surface border border-border rounded-lg overflow-auto;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-bg font-display font-semibold px-6 py-2.5 rounded-lg
+           transition-all duration-200 hover:bg-accent-dim hover:shadow-glow
+           disabled:opacity-40 disabled:cursor-not-allowed active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-border text-subtle px-6 py-2.5 rounded-lg font-body
+           transition-all duration-200 hover:border-accent hover:text-accent
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .input-field {
+    @apply w-full bg-surface border border-border rounded-lg px-4 py-3 text-white
+           placeholder:text-muted font-body text-sm
+           focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+           transition-all duration-200;
+  }
+
+  .badge-severity-critical { @apply bg-red-900/30 text-red-400 border border-red-800/50; }
+  .badge-severity-high { @apply bg-orange-900/30 text-orange-400 border border-orange-800/50; }
+  .badge-severity-medium { @apply bg-yellow-900/30 text-yellow-400 border border-yellow-800/50; }
+  .badge-severity-low { @apply bg-blue-900/30 text-blue-400 border border-blue-800/50; }
+}
+
+/* Syntax highlighter overrides */
+.syntax-container pre {
+  margin: 0 !important;
+  border-radius: 0.5rem !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.8rem !important;
+}
+
+/* Loading shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #16161f 25%, #1e1e2e 50%, #16161f 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
